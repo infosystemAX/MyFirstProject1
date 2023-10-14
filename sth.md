@@ -1,3 +1,4 @@
+```mermaid
 graph TD;
     A[Початок];
     B[Імпорт бібліотеки numpy];
