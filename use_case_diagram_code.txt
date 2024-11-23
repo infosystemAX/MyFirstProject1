@@ -1,0 +1,24 @@
+
+digraph G {
+    rankdir=TB;
+    size="8,10";
+
+    AppUser [label="App User", shape="actor"];
+    StripeAPI [label="Stripe API", shape="actor"];
+
+    Payment [label="Оплата замовлення", shape="box", width="3", height="5", style="dotted"];
+
+    ChooseCard [label="Обрання платіжної картки", shape="ellipse"];
+    AddCard [label="Додавання картки", shape="ellipse"];
+    SendReceipt [label="Відправлення email-квитанції", shape="ellipse"];
+    VerifyTransaction [label="Перевірка транзакції", shape="ellipse"];
+    ApplyDiscount [label="Застосування промокоду/знижки", shape="ellipse"];
+
+    AppUser -> ChooseCard;
+    ChooseCard -> AddCard [label="«extend»", style="dashed"];
+    AddCard -> StripeAPI;
+    StripeAPI -> SendReceipt;
+    AppUser -> ApplyDiscount;
+    StripeAPI -> VerifyTransaction;
+    VerifyTransaction -> SendReceipt;
+}
